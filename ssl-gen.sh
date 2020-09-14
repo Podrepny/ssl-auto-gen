@@ -53,7 +53,7 @@ openssl genrsa -out ${PATHTOSSLDIR}/${ROOTCAKEYNAME}.key ${ROOTCAKEYBIT}
 ###############################################################################
 openssl req -x509 -new -nodes -key ${PATHTOSSLDIR}/${ROOTCAKEYNAME}.key \
   -sha256 \
-  -days 365 \
+  -days ${ROOTCACRTDAYS} \
   -out ${PATHTOSSLDIR}/${ROOTCAKEYNAME}.crt \
   -subj "/C=${ROOTCAINFO_C}/ST=${ROOTCAINFO_ST}/L=${ROOTCAINFO_L}/O=${ROOTCAINFO_O}/OU=${ROOTCAINFO_OU}/CN=${ROOTCAINFO_CN}/"
 
