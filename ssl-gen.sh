@@ -80,14 +80,15 @@ openssl x509 -req \
   -days ${CLIENYKEYDAYS} \
   -sha256 \
   -extfile <(cat <<EOF
-    authorityKeyIdentifier=keyid,issuer
-    basicConstraints=CA:FALSE
-    keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
-    subjectAltName = @alt_names
-    [ alt_names ]
-    DNS.1 = ${SSLHOSTNAME}
-    IP.1 = ${SSLIPADR}
-EOF)
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+subjectAltName = @alt_names
+[ alt_names ]
+DNS.1 = ${SSLHOSTNAME}
+IP.1 = ${SSLIPADR}
+EOF
+)
 
 ###############################################################################
 ## Сombining two certificates root CA and client to ${CLIENTKEYNAME}.pem
